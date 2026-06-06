@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        /*This is a CSS Code*/
+        body {
+            background: #f1f5f9;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            background: #38bdf8;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!--This is a HTML Code-->
+    <div class="container">
+        <h1>Clicked: <span id="count">0</span></h1>
+        <button onclick="increasecount()">Click Me</button>
+    </div>
+<script>
+    //This is a Javascript Code
+    let count= 0;
+    function increasecount() {
+        count=count+1;
+    document.getElementById("count").innerText=count;
+    }
+</script>
+</body>
+</html>
