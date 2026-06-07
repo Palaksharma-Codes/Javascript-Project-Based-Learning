@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color generator</title>
+    <style>
+        /*This is a CSS Code*/
+        body  {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!--This is a HTML Code-->
+    <h1>Color Generator</h1>
+    <button onclick="changecolor()">Change Color</button>
+<script>
+    //This is a Javascript Code
+    let colors= ["red","blue","green","yellow","purple","orange","pink"];
+    function changecolor() {
+        let randomIndex= Math.floor(Math.random()*colors.length);
+        document.body.style.backgroundColor= colors[randomIndex];
+    }
+</script>
+</body>
+</html>
