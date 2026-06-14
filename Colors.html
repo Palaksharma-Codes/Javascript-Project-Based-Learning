@@ -21,12 +21,16 @@
     <!--This is a HTML Code-->
     <h1>Color Generator</h1>
     <button onclick="changecolor()">Change Color</button>
+    <p id="colorName">Current color: None</p>
 <script>
     //This is a Javascript Code
-    let colors= ["red","blue","green","yellow","purple","orange","pink"];
+    let colors= ["red","blue","green","yellow","purple","orange","pink","cyan","brown","lime","gold","teal"];
     function changecolor() {
         let randomIndex= Math.floor(Math.random()*colors.length);
-        document.body.style.backgroundColor= colors[randomIndex];
+        let selectedColor= colors[randomIndex];
+        document.body.style.backgroundColor= selectedColor;
+        document.getElementById("colorName").innerText= "Current Color:" + selectedColor;
+        document.getElementById("colorName").style.color= colors[Math.floor(Math.random()*colors.length)];
     }
 </script>
 </body>
