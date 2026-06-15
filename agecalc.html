@@ -23,12 +23,14 @@
     <input type="number" id="birthyear" placeholder="Enter your birthyear">
     <button onclick="CalculateAge()">Calculate Age</button>
     <h2 id="result"></h2>
+    <h2 id="nextYear"></h2>
 <script>
     //This is a Javascript
     function CalculateAge() {
         let birthyear= document.getElementById("birthyear").value;
         let age= 2026-birthyear;
         document.getElementById("result").innerText= "Your age is "+ age;
+        document.getElementById("nextYear").innerText= "You will be " + (age+1) + "next year."
     }
 </script>
 </body>
