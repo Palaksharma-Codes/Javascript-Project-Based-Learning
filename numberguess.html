@@ -12,24 +12,30 @@
         }
         input,button {
             padding: 10px;
-            font-size: 18px;
+            font-size: 17px;
         }
     </style>
 </head>
 <body>
-    <h1>Guess The Number Challenge(1-10)</h1>
+    <h1>Guess The Number Challenge(1-20)</h1>
     <input type="number" id="guess">
-    <button onclick="CheckGuess()">Check</button>
+    <button onclick="checkGuess()">Check Guess</button>
+    <button onclick="playAgain()">Play Again</button>
     <h2 id="result"></h2>
 <script>
-    let SecretNumber= Math.floor(Math.random()*10)+1;
-    function CheckGuess() {
-        let UserGuess= document.getElementById("guess").value;
-        if(UserGuess==SecretNumber) {
+    let secretNumber= Math.floor(Math.random()*20) + 1;
+    function checkGuess() {
+        let userGuess= document.getElementById("guess").value;
+        if(userGuess == secretNumber) {
             document.getElementById("result").innerText= "Correct!";
     } else {
-        document.getElementById("result").innerText= "Wrong..";
+        document.getElementById("result").innerText= "Wrong! The correct number was " + secretNumber;
     }
+    }
+    function playAgain() {
+        secretNumber = Math.floor(Math.random()*20) + 1;
+        document.getElementById("guess").value= "";
+        document.getElementById("result").innerText="New Game Started!";
     }
 </script>
 </body>
