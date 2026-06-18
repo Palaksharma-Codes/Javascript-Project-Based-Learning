@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="timer">0</h1>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+<script>
+  let seconds=0;
+  let interval;
+  function startTimer() {
+    interval=setInterval(function() {
+        seconds++;
+        document.getElementById("timer").innerText=seconds;
+    },1000);
+  }
+  function stopTimer() {
+    clearInterval(interval);
+  }
+</script>
+</body>
+</html>
