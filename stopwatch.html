@@ -21,17 +21,30 @@
     <h1 id="timer">0</h1>
     <button onclick="startTimer()">Start</button>
     <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
 <script>
-  let seconds=0;
+  let seconds= 0;
   let interval;
   function startTimer() {
+    if(interval!==null) {
+        return;
+    }
     interval=setInterval(function() {
         seconds++;
-        document.getElementById("timer").innerText=seconds;
+        let mins=Math.floor(seconds/60);
+        let secs=seconds%60;
+        document.getElementById("timer").innerText=String(mins).padStart(2,"0")+":"+String(secs).padStart(2,"0");
     },1000);
   }
   function stopTimer() {
     clearInterval(interval);
+    interval=null;
+  }
+  function resetTimer() {
+    clearInterval(interval);
+    interval=null;
+    seconds=0;
+    document.getElementById("timer").innerText="00:00";
   }
 </script>
 </body>
