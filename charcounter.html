@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character COunter</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character Counter</h1>
+    <textarea id="textInput" max-length="150" oninput="countCharacters()" placeholder="start typing..."></textarea>
+    <h2 id="result">Characters:0|Words:0</h2>
+<script>
+    function countCharacters() {
+        let text=document.getElementById("textInput").value;
+        let charCount=text.length;
+        let Words=text.trim()===""?0:text.trim().split(/\s+/).length;
+        let result=document.getElementById("result");
+        result.innerText="Characters:"+charCount+"|Words:"+Words;
+        if(charCount>100) {
+            result.innerText="|Limit Exceeded";
+            result.style.color="red";
+        } else {
+            result.style.color="black";
+        }
+    }
+</script>
+</body>
+</html>
