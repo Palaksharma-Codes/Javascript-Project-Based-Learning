@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button{
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <input type="number" id="weight" placeholder="weight(kg)">
+    <br><br>
+    <input type="number" id="height" placeholder="height(m)">
+    <br><br>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <h2  id="result"></h2>
+<script>
+    function calculateBMI() {
+        let weight=parseFloat(
+            document.getElementById("weight").value
+        );
+        let height=parseFloat(
+            document.getElementById("height").value
+        );
+        let result=document.getElementById("result");
+        if(!weight || !height) {
+            result.innerText="Please enter weight and height";
+            result.style.color="red";
+            return;
+        }
+        let bmi=weight/(height*height);
+        let message="";
+        if(bmi<18.5){
+            message="Underweight";
+            result.style.color="Orange";
+        }
+        else if(bmi<25) {
+            message="Normalweight";
+            result.style.color="green";
+        }
+        else if(bmi<30){
+            message="Overweight";
+            result.style.color="blue";
+        }
+        else {
+            message="Obese";
+            result.style.color="red";
+        }
+        result.innerText="BMI:"+bmi.toFixed(2)+"|"+message;
+    }
+</script>
+</body>
+</html>
