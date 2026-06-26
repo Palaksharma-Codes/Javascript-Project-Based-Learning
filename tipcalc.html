@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tip Calculator</h1>
+    <input type="number" id="bill" placeholder="Bill Amount">
+    <br><br>
+    <input type="number" id="tip" placeholder="Tip%">
+    <br><br>
+    <button onclick="calculateTip()">Calculate</button>
+    <button onclick="resetCalculator()">Reset</button>
+    <h2 id="result"></h2>
+
+<script>
+    function calculateTip() {
+        let bill=parseFloat(
+            document.getElementById("bill").value
+        );
+        let tipPercent=parseFloat(
+            document.getElementById("tip").value
+        );
+        let tipAmount=(bill*tipPercent)/100;
+        let total=bill+tipAmount;
+        let message="";
+        if(tipPercent<10) {
+            message="Small Tip";
+        }
+        else {
+            message="Generous Tip";
+        }
+        document.getElementById("result").innerText="Tip:"+tipAmount.toFixed(2)+"|Total:"+total.toFixed(2)+"|"+message;
+        }
+        function resetCalculator() {
+            document.getElementById("bill").value="";
+            document.getElementById("tip").value="";
+            document.getElementById("result").innerText="";
+        }
+    </script>
+</body>
+</html>
