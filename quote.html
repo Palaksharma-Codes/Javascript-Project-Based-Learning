@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Random Quote Generator</h1>
+    <button onclick="generateQuote()">Generate Quote</button>
+    <h2 id="quote"></h2>
+
+<script>
+    let quotes=[ "The future depends on what you do today",
+        "Successs is the sum of small efforts repeatedly daily.",
+        "Dream big and dare to fail.",
+        "Stay hungry,Stay foolish.",
+        "Beleive you can and you're hlafway there.",
+        "Never stop learning.",
+        "Practice makes progress.",
+        "Small steps everyday leads to big results everyday.",
+        "Code,Learn,Repeat.",
+        "Hardwork beats talent when talent doesn't work hard.",
+        "Your only limit is your mind.",
+        "Consistency is the key to success.",
+        "Every expert was once a beginner.",
+    ];
+    let colors=["red","blue","green","yellow","orange","pink","brown","gold","teal","crimson"];
+    function generateQuote() {
+        let randomIndex=Math.floor(Math.random()*quotes.length);
+        let randomColor=colors[Math.floor(Math.random()*colors.length)];
+        document.getElementById("quote").innerText="Quote #"+(randomIndex+1)+":"+quotes[randomIndex];
+        document.getElementById("quote").style.color=randomColor;
+    }
+</script>
+</body>
+</html>
