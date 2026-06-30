@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Changer</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Background Color Changer</h1>
+    <input type="color" id="colorPicker" oninput="changeColor()">
+    <button onclick="resetColor()">Reset</button>
+    <h2 id="colorCode">#FFFFFF</h2>
+<script>
+    function changeColor() {
+        let color= document.getElementById("colorPicker").value;
+        document.body.style.backgroundColor=color;
+        document.getElementById("colorCode").innerText="You Selected: "+color;
+        document.getElementById("colorCode").style.color=color;
+    }
+    function resetColor() {
+        document.body.style.backgroundColor="#FFFFFF";
+        document.getElementById("colorCode").innerText="You Selected: #FFFFFF";
+        document.getElementById("colorCode").style.color="black";
+        document.getElementById("colorPicker").value="#FFFFFF";
+    }
+</script>
+</body>
+</html>
