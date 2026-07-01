@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <h2 id="clock"></h2>
+    <h3 id="date"></h3>
+    <h2 id="greeting"></h2>
+
+<script>
+    function showTime() {
+        let now=new Date();
+        let time=now.toLocaleTimeString();
+        let date=now.toLocaleDateString();
+        let hour=now.getHours();
+        let greeting="";
+        if(hour<12) {
+            greeting="Good Morning";
+            document.body.style.backgroundColor="#FFE082";
+        }
+        else if(hour<18) {
+            greeting="Good Afternoon";
+            document.body.style.backgroundColor="#90CAF9";
+        }
+        else {
+            greeting="Good Evening";
+            document.body.style.backgroundColor="#263238";
+            document.body.style.color="white";
+        }
+        document.getElementById("clock").innerText=time;
+        document.getElementById("date").innerText=date;
+        document.getElementById("greeting").innerText=greeting;
+    }
+    showTime();
+    setInterval(showTime,1000);
+</script>
+</body>
+</html>
