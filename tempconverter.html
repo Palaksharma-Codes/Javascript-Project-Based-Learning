@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <input type="number" id="temp" placeholder="Enter Temperature">
+    <br><br>
+    <button onclick="toCelsius()">To Celsius</button>
+    <button onclick="toFahrenheit()">To Fahrenheit</button>
+    <button onclick="reset()">Reset</button>
+    <h2 id="result"></h2>
+
+<script>
+    function toCelsius(){
+        let temp=document.getElementById("temp").value;
+        if(temp==="") {
+            document.getElementById("result").innerText="Please Enter Temperature";
+            return;
+        }
+        temp=parseFloat(temp);
+        let celsius=(temp-32)*5/9;
+        document.getElementById("result").innerText=celsius.toFixed(2)+"°C";
+        changeBackground(celsius);
+    }
+    function toFahrenheit() {
+         let temp=document.getElementById("temp").value;
+        if(temp==="") {
+            document.getElementById("result").innerText="Please Enter Temperature";
+            return;
+        }
+        temp=parseFloat(temp);
+        let fahrenheit=(temp*9/5)+32;
+        document.getElementById("result").innerText=fahrenheit.toFixed(2)+"°F";
+        changeBackground(temp);
+    }
+    function changeBackground(temp) {
+        if(temp<15) {
+            document.body.style.backgroundColor="skyblue";
+        }
+        else if (temp<=30) {
+            document.body.style.backgroundColor="lightgreen";
+        }
+        else {
+            document.body.style.backgroundColor="tomato";
+        }
+    }
+    function reset() {
+        document.getElementById("result").value="";
+        document.getElementById("result").innerText="";
+        document.body.style.backgroundColor="White";
+    }
+</script>
+</body>
+</html>
