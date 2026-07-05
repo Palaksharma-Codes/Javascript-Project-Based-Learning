@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <textarea id="text" placeholder="Type Something..."></textarea>
+    <br><br>
+    <button onclick="countWords()">Count Words</button>
+    <button onclick="convertUpperCase()">UPPERCASE</button>
+    <h2 id="result"></h2>
+<script>
+    function countWords() {
+
+        let text=document.getElementById("text").value;
+        text=text.trim();
+
+        if(text===""){
+            document.getElementById("result").innerText="Words:0 | Characters:0 | LongestWord:None";
+            return;
+        }
+
+        let words=text.split(/\s+/);
+        let longestWord=words[0];
+
+        for( let i = 1; i <words.length; i++) {
+            if(words[i].length>longestWord.length) {
+                longestWord=words[i];
+            }
+        }
+        document.getElementById("result").innerText="Words:"+words.length+" | Characters:"+ text.length+" | Longest Word:"+ longestWord;
+    }
+    function convertUpperCase() {
+        let text=document.getElementById("text").value;
+        document.getElementById("text").value=text.toUpperCase();
+    }
+</script>
+</body>
+</html>
