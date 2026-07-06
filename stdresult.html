@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Calculator</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Result Calculator</h1>
+    <input type="number" id="english" placeholder="English Marks">
+    <br><br>
+    <input type="number" id="math" placeholder="Math Marks">
+    <br><br>
+    <input type="number" id="science" placeholder="Science Marks">
+    <br><br>
+    <input type="number" id="social" placeholder="Social Marks">
+    <br><br>
+    <input type="number" id="computer" placeholder="Computer Marks">
+    <br><br>
+    <button onclick="calculateResult()">Calculate Result</button>
+    <button onclick="resetResult()">Reset</button>
+    <h2 id="result"></h2>
+
+<script>
+    function calculateResult() {
+        let english=document.getElementById("english").value;
+         let math=document.getElementById("math").value;
+          let science=document.getElementById("science").value;
+           let social=document.getElementById("social").value;
+            let computer=document.getElementById("computer").value;
+    if(
+        english===""||
+        math===""||
+        science===""||
+        social===""||
+        computer===""
+    ) {
+        document.getElementById("result").innerText="Please fill all the fields";
+        return;
+    }
+    english=parseFloat(english);
+    math=parseFloat(math);
+    science=parseFloat(science);
+    social=parseFloat(social);
+    computer=parseFloat(computer);
+
+    let total=english+math+science+social+computer;
+    let percentage=total/5;
+    let grade="";
+    let status="";
+    if(percentage>=90) {
+        grade="A+";
+        status="Pass!";
+    }
+    else if(percentage>=80) {
+        grade="A";
+        status="Pass!";
+    }
+    else if(percentage>=70) {
+        grade="B";
+        status="Pass!";
+    }
+    else if(percentage>=60) {
+        grade="C";
+        status="Pass!";
+    }
+    else {
+        grade="F";
+        status="Fail!";
+    }
+    document.getElementById("result").innerText="Total:"+total+"| Percentage:"+percentage.toFixed(2)+"%"+"| Grade:"+grade+"| status:"+status;
+}
+function resetResult() {
+    document.getElementById("english").value="";
+     document.getElementById("math").value="";
+      document.getElementById("science").value="";
+       document.getElementById("social").value="";
+        document.getElementById("computer").value="";
+        document.getElementById("result").innerText="";
+}
+</script>
+</body>
+</html>
