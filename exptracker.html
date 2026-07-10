@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <input type="text" id="expense" placeholder="Enter Name">
+    <br><br>
+    <input type="number" id="amount" placeholder="Amount">
+    <br><br>
+    <button onclick="addExpense()"> Add Expense</button>
+    <h2>Total: <span id="total">0</span></h2>
+    <h3>Total Expenses: <span id="count">0</span></h3>
+    <ul id="expenseList"></ul>
+
+    <script>
+        let expenses=JSON.parse(localStorage.getItem("expenses"))||[];
+        displayExpenses();
+        function addExpense() {
+            let expense=document.getElementById("expense").value.trim();
+            let amount=parseFloat(document.getElementById("amount").value);
+            if(expense===""||isNaN(amount)){
+                alert("Please enter a valid expense and amount");
+                return;
+            }
+            expenses.push({
+                name:expense,
+                price:amount
+            });
+            localStorage.setItem("expenses",JSON.stringify(expenses));
+            displayExpenses();
+            document.getElementById("expense").value="";
+            document.getElementById("amount").value="";
+        }
+        function deleteExpense(index){
+            expenses.splice(index,1);
+            localStorage.setItem("expenses",JSON.stringify(expenses));
+            displayExpenses();
+        }
+        function displayExpenses(){
+            let list=document.getElementById("expenseList");
+            list.innerHTML="";
+            let total=0;
+            expenses.forEach(function(item,index){
+                let li=document.createElement("li");
+                 li.innerHTML = item.name + " - ₹" + item.price +
+        ' <button onclick="deleteExpense(' + index + ')">Delete</button>';
+                list.appendChild(li);
+                total+=item.price;
+            });
+            document.getElementById("total").innerText=total;
+            document.getElementById("count").innerText=expenses.length;
+        }
+    </script>
+</body>
+</html>
