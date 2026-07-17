@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,button{
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Habit Tracker</h1>
+    <input type="text" id="habit" placeholder="Enter Habit">
+    <button onclick="addHabit()">Add Habit</button>
+    <h2 id="completed">Completed:0/0</h2>
+    <ul id="habitList"></ul>
+
+    <script>
+        let habits=JSON.parse(localStorage.getItem("habits"))||[];
+        displayHabits();
+        function addHabit() {
+            let habit=document.getElementById("habit").value.trim();
+            if(habit===""){
+                alert("Please enter a habit!");
+                return;
+            }
+            habits.push({
+                name:habit,
+                completed:false
+            });
+            localStorage.setItem("habits",JSON.stringify(habits));
+            document.getElementById("habit").value="";
+            displayHabits();
+        }
+       function displayHabits(){
+        let list = document.getElementById("habitList");
+        list.innerHTML = "";
+        let completedCount = 0;
+        habits.forEach(function(item,index){
+        if(item.completed){
+            completedCount++;
+        }
+        let li =
+        document.createElement("li");
+
+        li.innerHTML =
+        `
+        <input
+        type="checkbox"
+        ${item.completed ? "checked" : ""}
+        onchange="toggleHabit(${index})">
+
+        <span class="${item.completed ? "completed" : ""}">
+        ${item.name}
+        </span>
+
+        <button onclick="deleteHabit(${index})">Delete</button>
+        `;
+
+        list.appendChild(li);
+    });
+     document.getElementById("completed").innerText =`Completed: ${completedCount}/${habits.length}`;
+
+    }
+    function toggleHabit(index) {
+    habits[index].completed=!habits[index].completed;
+    localStorage.setItem("habits",JSON.stringify(habits));
+    displayHabits();
+    }
+    function deleteHabit(index) {
+        habits.splice(index,1);
+        localStorage.setItem("habits",JSON.stringify(habits));
+        displayHabits();
+    }
+
+
+    </script>
+</body>
+</html>
